@@ -16,7 +16,6 @@ typedef struct Head
 } headNode;
 
 void insertNode(headNode *head, char data[100]); // 노드를 삽입할 함수
-void freeList(headNode *head);                   // 메모리 동적할당을 해제할 함수
 
 int only_one_count;   // 총 node의 수
 int near_prime_count; // 1을 빼거나 더했을 때, 소수인 정수의 수
@@ -55,8 +54,7 @@ int main()
     printf("Only one count : %d\n", only_one_count);
     printf("Near prime count : %d", near_prime_count);
 
-    free(head);
-    fclose(fp);
+    //실행 시간을 줄이기 위해 free, close 생략
     return 0;
 }
 
@@ -85,19 +83,4 @@ void insertNode(headNode *head, char data[100])
     trail->link = node;
 
     only_one_count++;
-}
-
-// 동적할당을 해제하는 함수
-void freeList(headNode *head)
-{
-    listNode *p = head->first;
-    listNode *trail = NULL;
-
-    while (p != NULL)
-    {
-        trail = p;
-        p = p->link;
-        free(trail);
-    }
-    free(head);
 }
