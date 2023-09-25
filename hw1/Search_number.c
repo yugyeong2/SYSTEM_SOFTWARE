@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <Stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
@@ -47,8 +47,8 @@ int main()
     }
 
     // 출력
-    printf("Only one count : %d\n", only_one_count);
-    printf("Near prime count : %d", near_prime_count);
+    printf("Only one count : %d \n", only_one_count);
+    printf("Near prime count : %d \n", near_prime_count);
 
     // 실행 시간을 줄이기 위해 free, close 생략
     return 0;
@@ -56,9 +56,12 @@ int main()
 
 void initialize(FILE *fp, headNode *head)
 {
-    listNode *node = (listNode *)malloc(sizeof(listNode));
+    char buf[20];                   // temporary storage
+    fgets(buf, sizeof(buf), fp);    // input data
+    buf[strcspn(buf, "\n")] = '\0'; // 개행문자 제거
 
-    fgets(node->data, sizeof(node->data), fp); // input data
+    listNode *node = (listNode *)malloc(sizeof(listNode));
+    strcpy(node->data, buf);
     node->link = NULL;
     head->first = node; // 헤드는 첫 번째 노드를 가리킨다
 
@@ -67,12 +70,13 @@ void initialize(FILE *fp, headNode *head)
 
 void insertNode(FILE *fp, headNode *head)
 {
-    char buf[20];                // temporary storage
-    fgets(buf, sizeof(buf), fp); // input data
+    char buf[20];                   // temporary storage
+    fgets(buf, sizeof(buf), fp);    // input data
+    buf[strcspn(buf, "\n")] = '\0'; // 개행문자 제거
 
     // 리스트를 탐색할 포인터 p, trail
     listNode *p = head->first;
-    listNode *trail = head->first;
+    listNode *trail = NULL;
 
     while (p != NULL)
     { // 중복 검사
