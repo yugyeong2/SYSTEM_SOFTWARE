@@ -8,14 +8,18 @@ Linked list 또는 tree 구조를 이용하여 프로그램을 작성하시오.
 - 입력의 대부분은 0 <= n <= 10 ** 5 인 정수 n이다.
 
 * 입력
+
 없음
 
-input.txt는 문제에 포함되어 있고, 동일한 디렉토리에 존재한다고 가정한다.
-fp=fopen("input.txt", "r");
+- input.txt는 문제에 포함되어 있고, 동일한 디렉토리에 존재한다고 가정한다.
+- fp=fopen("input.txt", "r");
+
 위와 같은 식으로 접근하면 됩니다.
 
 * 출력
+
 Only one count : 63318
+
 Near prime count : 11376
 
 위와 동일하게(대소문자 구분) 출력되어야 한다.
